@@ -1,0 +1,65 @@
+Sub 删除不可见字符()
+
+'此代码的附加功能：若遇到带公式的格子，会先转换为不带公式的值，再去掉不可见字符。
+
+'有个bug，所有处理过的区域都会变成文本格式
+
+Dim rng As Range, i, j, k, leng As Integer
+
+Dim r, c, s, ascma
+
+Set rng = Selection
+
+arr = rng
+
+r = rng.Rows.Count
+
+c = rng.Columns.Count
+
+rng.Interior.ColorIndex = xlNone                   '设置区域背景为无色
+
+rng.NumberFormatLocal = "@"                        '设置区域格式为文本
+
+If r = 1 And c = 1 Then
+
+  arr = Replace(arr, ChrW(1), "")
+
+  arr = Replace(arr, ChrW(9), "")
+
+  arr = Replace(arr, ChrW(10), "")
+
+  arr = Replace(arr, ChrW(13), "")
+
+  arr = Replace(arr, ChrW(32), "")
+
+  arr = Replace(arr, ChrW(160), "")
+
+Else
+
+  For i = 1 To r
+
+    For j = 1 To c                '1、32是空格，9是制表符，10、13是换行符
+
+      arr(i, j) = Replace(arr(i, j), ChrW(1), "")
+
+      arr(i, j) = Replace(arr(i, j), ChrW(9), "")
+
+      arr(i, j) = Replace(arr(i, j), ChrW(10), "")
+
+      arr(i, j) = Replace(arr(i, j), ChrW(13), "")
+
+      arr(i, j) = Replace(arr(i, j), ChrW(32), "")
+
+      arr(i, j) = Replace(arr(i, j), ChrW(160), "")
+
+    Next
+
+  Next
+
+End If
+
+rng = arr
+
+MsgBox "区域中的空格、制表符、换行符、char(160)都已删除！！！"
+
+End Sub
