@@ -1,0 +1,37 @@
+Sub CopyToOtherBook()
+'
+' copyToOtheBook Macro
+'
+ 
+'
+    Dim fname As String
+    Dim maxLine As Integer
+    Dim maxLineS As String
+    Dim wb As Workbook
+    Dim curSheet As String
+    
+    '除去表头，所有行选中
+    maxLine = ActiveSheet.UsedRange.Rows.Count
+    maxLineS = "2:" + CStr(maxLine)
+    Rows(maxLineS).Select
+    '复制
+    Selection.Copy
+    
+    
+    fpath = "C:\Users\Administrator\Desktop\发票\"
+    fname = "自动发票模板.xlsx"
+    curSheet = "导入数据"
+    
+    '打开第二个工作薄，激活汇总表
+    Set wb = Workbooks.Open(fpath + fname)
+    wb.Worksheets(curSheet).Activate
+    
+    '找到最后一行
+    maxLine = ActiveSheet.UsedRange.Rows.Count
+    '选中最后一行下一行第一个表格
+    Cells(maxLine + 1, 1).Select
+    '粘贴
+    ActiveSheet.Paste
+    Range("AN2:AN50").CurrentRegion = Range("AN2:AN50").CurrentRegion.Value
+    
+End Sub
