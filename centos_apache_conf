@@ -7,6 +7,12 @@ WSGIDaemonProcess mysite python-home=/home/ebal/mysite/venv python-path=/home/eb
 WSGIProcessGroup mysite
 
 
+# Socket在lunix 无访问权限的替代设置： for Unable to connect to WSGI \
+# daemon process '<process-name>' on '/etc/httpd/logs/wsgi.26957.0.1.sock' \
+WSGISocketPrefix run/wsgi
+
+
+
 
 Alias /static /home/ebal/mysite/static
 <Directory /home/ebal/mysite/static>
