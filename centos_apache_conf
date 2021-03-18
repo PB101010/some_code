@@ -23,5 +23,5 @@ Alias /static /home/ebal/mysite/static
 
 
 
-sudo usermod -a -G ebal apache
+sudo usermod -a -G ebal ebal
 chmod 710 /home/ebal
