@@ -1,3 +1,13 @@
+# 基础设置
+WSGIScriptAlias / /home/ebal/mysite/mysite/wsgi.py
+WSGIPythonHome /home/ebal/mysite/venv
+
+# daemon模式不单独写pythonPath
+WSGIDaemonProcess mysite python-home=/home/ebal/mysite/venv python-path=/home/ebal/mysite
+WSGIProcessGroup mysite
+
+
+
 Alias /static /home/ebal/mysite/static
 <Directory /home/ebal/mysite/static>
     Require all granted
@@ -10,9 +20,6 @@ Alias /static /home/ebal/mysite/static
 </Directory>
 
 
-WSGIDaemonProcess mysite python-path=/home/ebal/mysite/:/home/ebal/mysite/venv/lib/python3.6/site-packages
-WSGIProcessGroup mysite
-WSGIScriptAlias / /home/ebal/mysite/mysite/wsgi.py
 
 
 
