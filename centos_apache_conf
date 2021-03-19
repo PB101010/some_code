@@ -9,7 +9,7 @@ WSGIProcessGroup mysite
 
 # Socket在lunix 无访问权限的替代设置： for Unable to connect to WSGI \
 # daemon process '<process-name>' on '/etc/httpd/logs/wsgi.26957.0.1.sock' \
-# 主要是改变文件存储位置,绕过linux严格的文件策略
+# 主要是改变文件存储位置,绕过某些版本linux严格的文件策略
 WSGISocketPrefix /var/run/wsgi
 
 
