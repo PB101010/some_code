@@ -1,3 +1,7 @@
 #点击不可见元素（display: None）
 element  = driver.find_elements_by_class_name("aliexpressDeleteBtnBthClazz")[0]
 driver.execute_script("$(arguments[0]).click();", element)
+
+
+清除clear()无效
+driver.execute_script('document.querySelector("input#tradeOrderId").value="";')
